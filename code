@@ -1,0 +1,10 @@
+import pandas as pd
+
+# https://files.grouplens.org/datasets/movielens/ml-25m.zip
+movies = pd.read_csv("/content/movies.csv")
+movies.head()
+import re
+def clean_title(title):
+    title = re.sub("[^a-zA-Z0-9 ]", "", title)
+    return title
+movies["clean_title"] = movies["title"].apply(clean_title)
